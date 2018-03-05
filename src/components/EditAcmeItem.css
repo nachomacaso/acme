@@ -1,0 +1,16 @@
+.Edit-wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 40px 100px 40px;
+    padding: 100px;
+}
+
+.Edit-form {
+    grid-column: span 6;
+    text-align: center;
+    padding: 20px;
+}
+
+.Edit-buttons {
+    grid-column: span 12;
+}
