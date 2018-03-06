@@ -111,7 +111,7 @@ class EditAcmeItem extends Component {
             <div className="container">
                 <h3 className="edit">Edit This Acme Item</h3>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-xs-12 col-sm-12 col-md-6">
                         <TextField 
                             hintText="Title Field"
                             floatingLabelText="Title"
@@ -126,7 +126,7 @@ class EditAcmeItem extends Component {
                             defaultValue={this.state.data["price"]}/>
                         <br />
                     </div>
-                    <div className="col-6">
+                    <div className="col-xs-12 col-sm-12 col-md-6">
                         <TextField 
                             hintText="Enter different tags, each seperated by commas."
                             floatingLabelText="Tags"
@@ -140,7 +140,7 @@ class EditAcmeItem extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-xs-12 col-sm-12 col-md-6">
                         <TextField
                             hintText="Address Field"
                             floatingLabelText="Address"
@@ -166,7 +166,7 @@ class EditAcmeItem extends Component {
                             defaultValue={this.state.data["zip"]}/>
                         <br />
                     </div>
-                    <div className="col-6">
+                    <div className="col-xs-12 col-sm-12 col-md-6">
                         <TextField 
                             hintText="Enter any notes you would like for this item."
                             floatingLabelText="Notes"
