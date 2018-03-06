@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Route, Redirect} from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import SearchAcme from './components/SearchAcme';
 import CreateNewItem from './components/CreateNewItem';
 import EditAcmeItem from './components/EditAcmeItem';

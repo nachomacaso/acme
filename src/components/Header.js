@@ -7,29 +7,22 @@ import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { triggerMenu: true };
-    this.handleMenu = this.handleMenu.bind(this);
-  }
 
-  handleMenu() {
-    console.log('hey');
-    this.setState({ triggerMenu: false });
-  }
-
+  // GAH IF I HAD MORE TIME I'D FIX THIS KNOWN ICON MENU BUG
   openMenu() {
-    console.log(this.state.triggerMenu);
+    let iconStyle ={"color": "white"};
     return (
         <IconMenu
             iconButtonElement={<IconButton><NavigationMenu /></IconButton>}
             anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-            targetOrigin={{horizontal: 'left', vertical: 'top'}}>
-            <Link to="/search">
-              <MenuItem primaryText="Acme Inventory" onCLick={this.handleMenu}/>
+            targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            iconStyle={iconStyle}
+            clickCloseDelay={200}>
+            <Link to={{ pathname: '/search', state: { notification: false} }}> 
+              <MenuItem primaryText="Acme Inventory"/>
             </Link>
             <Link to="/create">
-              <MenuItem primaryText="Create New Acme Item"  onCLick={this.handleMenu}/>
+              <MenuItem primaryText="Create New Acme Item"/>
             </Link>
         </IconMenu>
     );
@@ -37,8 +30,10 @@ class Header extends Component {
 
 
   render() {
+    let titleStyle = {"textAlign": "left"};
     return (
-      <AppBar title="Acme"
+      <AppBar title="Acme Corporation"
+              titleStyle={titleStyle}
               iconElementLeft={this.openMenu()}
       />
     );

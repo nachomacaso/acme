@@ -29,6 +29,7 @@ class CreateNewItem extends React.Component {
             stateValue: 1,
             tags: [],
             notes: "",
+            notification: false,
             disableButton: true,
         };
         this.handleTitle = this.handleTitle.bind(this);
@@ -122,12 +123,11 @@ class CreateNewItem extends React.Component {
         acmeItem['zip'] = this.state.zip;
         acmeItem['tags'] = this.state.tags.join(', ');
         acmeItem['notes'] = this.state.notes;
-        console.log(acmeItem);
         let acmeStorage = localStorage.getItem('acme');
         let acmeObjs = JSON.parse(acmeStorage);
         acmeObjs.push(acmeItem);
-        console.log(acmeObjs);
         localStorage.setItem('acme', JSON.stringify(acmeObjs));
+        this.setState({ notification: true });
     }
 
     getStepContent(stepIndex) {
@@ -169,7 +169,7 @@ class CreateNewItem extends React.Component {
                 style={{marginRight: 12}}
             />
             { (stepIndex === 3 )
-            ? <Link to="/search"> 
+            ? <Link to={{ pathname: '/search', state: { notification: true} }}> 
                 <RaisedButton
                     label="Finish"
                     primary={true}
@@ -192,7 +192,7 @@ class CreateNewItem extends React.Component {
 
         return (
         <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-        <h1>Add A New Acme Item</h1>
+        <h3>Add A New Acme Item</h3>
             <Stepper activeStep={stepIndex}>
                 <Step>
                     <StepLabel>Details</StepLabel>

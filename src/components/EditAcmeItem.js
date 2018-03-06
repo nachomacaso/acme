@@ -53,7 +53,6 @@ class EditAcmeItem extends Component {
     }
 
     onTitleChange(e) {
-        console.log(e.target.value);
         if(e.target.value) {
             this.setState({
                 disableButton: false, 
@@ -107,80 +106,89 @@ class EditAcmeItem extends Component {
     }
     
     render() {
+        let labelStyle = {"textAlign": "left"};
         return (
-            <div className="Edit-wrapper">
-                <div className="Edit-form">
-                    <h3>Item Details</h3>
-                    <TextField 
-                        hintText="Title Field"
-                        floatingLabelText="Title"
-                        errorText="This field is required"
-                        onChange={this.onTitleChange}
-                        defaultValue={this.state.data["title"]}/>
-                    <br />
-                    <TextField
-                        hintText="Price Field"
-                        floatingLabelText="Price"
-                        onChange={this.onPriceChange}
-                        defaultValue={this.state.data["price"]}/>
-                    <br />
-                    <h3>Location</h3>
-                    <TextField
-                        hintText="Address Field"
-                        floatingLabelText="Address"
-                        onChange={this.onAddressChange}
-                        defaultValue={this.state.data["address"]}/>
-                    <br />
-                    <TextField
-                        hintText="City Field"
-                        floatingLabelText="City"
-                        onChange={this.onCityChange}
-                        defaultValue={this.state.data["city"]}/>
-                    <br />
-                    <TextField
-                        hintText="State Field"
-                        floatingLabelText="State"
-                        onChange={this.onStateChange}
-                        defaultValue={this.state.data["state"]}/>
-                    <br />
-                    <TextField
-                        hintText="Zip Code Field"
-                        floatingLabelText="Zip Code"
-                        onChange={this.onZipChange}
-                        defaultValue={this.state.data["zip"]}/>
-                    <br />
+            <div className="container">
+                <h3 className="edit">Edit This Acme Item</h3>
+                <div className="row">
+                    <div className="col-6">
+                        <TextField 
+                            hintText="Title Field"
+                            floatingLabelText="Title"
+                            errorText="This field is required"
+                            onChange={this.onTitleChange}
+                            defaultValue={this.state.data["title"]}/>
+                        <br />
+                        <TextField
+                            hintText="Price Field"
+                            floatingLabelText="Price"
+                            onChange={this.onPriceChange}
+                            defaultValue={this.state.data["price"]}/>
+                        <br />
+                    </div>
+                    <div className="col-6">
+                        <TextField 
+                            hintText="Enter different tags, each seperated by commas."
+                            floatingLabelText="Tags"
+                            multiLine={true}
+                            rows={6}
+                            rowsMax={8}
+                            floatingLabelStyle={labelStyle}
+                            onChange={this.onTagsChange}
+                            defaultValue={this.state.data["tags"]}/>
+                        <br />
+                    </div>
                 </div>
-                <div className="Edit-form">
-                    <h3>Tags</h3>
-                    <TextField 
-                        hintText="Enter different tags, each seperated by commas."
-                        floatingLabelText="Tags"
-                        multiLine={true}
-                        rows={6}
-                        rowsMax={8}
-                        onChange={this.onTagsChange}
-                        defaultValue={this.state.data["tags"]}/>
-                    <br />
-                    <h3>Notes</h3>
-                    <TextField 
-                        hintText="Enter any notes you would like for this item."
-                        floatingLabelText="Notes"
-                        multiLine={true}
-                        rows={6}
-                        rowsMax={8}
-                        onChange={this.onNotesChange}
-                        defaultValue={this.state.data["notes"]}/>
-                    <br />
+                <div className="row">
+                    <div className="col-6">
+                        <TextField
+                            hintText="Address Field"
+                            floatingLabelText="Address"
+                            onChange={this.onAddressChange}
+                            defaultValue={this.state.data["address"]}/>
+                        <br />
+                        <TextField
+                            hintText="City Field"
+                            floatingLabelText="City"
+                            onChange={this.onCityChange}
+                            defaultValue={this.state.data["city"]}/>
+                        <br />
+                        <TextField
+                            hintText="State Field"
+                            floatingLabelText="State"
+                            onChange={this.onStateChange}
+                            defaultValue={this.state.data["state"]}/>
+                        <br />
+                        <TextField
+                            hintText="Zip Code Field"
+                            floatingLabelText="Zip Code"
+                            onChange={this.onZipChange}
+                            defaultValue={this.state.data["zip"]}/>
+                        <br />
+                    </div>
+                    <div className="col-6">
+                        <TextField 
+                            hintText="Enter any notes you would like for this item."
+                            floatingLabelText="Notes"
+                            multiLine={true}
+                            rows={6}
+                            rowsMax={8}
+                            onChange={this.onNotesChange}
+                            defaultValue={this.state.data["notes"]}/>
+                        <br />
+                    </div>
                 </div>
-                <div className="Edit-buttons">
-                    <Link to="/search">
-                        <RaisedButton label="Back To Inventory" primary={true} />
-                    </Link>
-                    &nbsp;
-                    &nbsp;
-                    <Link to="/search">
-                        <RaisedButton label="Edit Acme Item" secondary={true} disabled={this.state.disableButton} onClick={this.editItem}/>
-                    </Link>
+                <div className="row edit-buttons">
+                    <div className="col-12">
+                        <Link to="/search">
+                            <RaisedButton label="Back To Inventory" primary={true} />
+                        </Link>
+                        &nbsp;
+                        &nbsp;
+                        <Link to={{ pathname: '/search', state: { notification: true} }}>
+                            <RaisedButton label="Edit Acme Item" secondary={true} disabled={this.state.disableButton} onClick={this.editItem}/>
+                        </Link>
+                    </div>
                 </div>
             </div>
         );
